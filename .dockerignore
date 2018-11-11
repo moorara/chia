@@ -1,0 +1,11 @@
+# Compiled files
+main
+chia
+
+# Test files
+*.log
+*.out
+*.test
+coverage/
+
+# Misc files

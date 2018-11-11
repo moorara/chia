@@ -1,0 +1,12 @@
+# Compiled files
+main
+chia
+
+# Test files
+*.log
+*.out
+*.test
+coverage/
+
+# Exceptions
+!Dockerfile.test
