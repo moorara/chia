@@ -1,6 +1,7 @@
 # Compiled files
 main
 chia
+chia-*
 
 # Test files
 *.log
