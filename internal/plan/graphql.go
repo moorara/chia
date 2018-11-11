@@ -13,5 +13,16 @@ type (
 
 	// GraphQLTest defines test spec for a GraphQL service
 	GraphQLTest struct {
+		Expect GraphQLExpect `yaml:"expect"`
+		Report GraphQLReport `yaml:"-"`
+	}
+
+	// GraphQLExpect defines expectations for a GraphQL test
+	GraphQLExpect struct {
+	}
+
+	// GraphQLReport defines results for a GraphQL test
+	GraphQLReport struct {
+		ResponseTime int
 	}
 )

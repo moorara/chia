@@ -13,5 +13,16 @@ type (
 
 	// GRPCTest defines test spec for a GRPC service
 	GRPCTest struct {
+		Expect GRPCExpect `yaml:"expect"`
+		Report GRPCReport `yaml:"-"`
+	}
+
+	// GRPCExpect defines expectations for a GRPC test
+	GRPCExpect struct {
+	}
+
+	// GRPCReport defines results for a GRPC test
+	GRPCReport struct {
+		ResponseTime int
 	}
 )

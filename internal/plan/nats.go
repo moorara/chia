@@ -12,5 +12,16 @@ type (
 
 	// NATSTest defines test spec for a NATS service
 	NATSTest struct {
+		Expect NATSExpect `yaml:"expect"`
+		Report NATSReport `yaml:"-"`
+	}
+
+	// NATSExpect defines expectations for a NATS test
+	NATSExpect struct {
+	}
+
+	// NATSReport defines results for a NATS test
+	NATSReport struct {
+		ResponseTime int
 	}
 )
