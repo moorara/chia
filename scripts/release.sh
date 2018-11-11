@@ -22,6 +22,7 @@ purple='\033[1;35m'
 blue='\033[1;36m'
 nocolor='\033[0m'
 
+version_file="VERSION"
 binary_prefix="./build/chia"
 
 
@@ -122,7 +123,7 @@ function disable_master_push {
 function release_current_version {
   printf "${blue}Releasing current version ...${nocolor}\n"
 
-  version=$(cat version/VERSION)
+  version=$(cat $version_file)
   components=(${version//./ })
   major="${components[0]}"
   minor="${components[1]}"
@@ -134,7 +135,7 @@ function release_current_version {
     major)  release_version="$(( major + 1 )).0.0"       next_version="$(( major + 1 )).0.1-0"            ;;
   esac
 
-  echo "$release_version" > version/VERSION
+  echo "$release_version" > $version_file
 }
 
 function generate_changelog {
@@ -218,7 +219,7 @@ function upload_binaries {
 
 function prepare_next_version {
   printf "${blue}Preparing next version v$next_version ...${nocolor}\n"
-  echo "$next_version" > version/VERSION
+  echo "$next_version" > $version_file
   {
     git add .
     git commit -m "Beginning v$next_version [skip ci]"
