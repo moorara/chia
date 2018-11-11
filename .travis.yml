@@ -1,7 +1,20 @@
-language: go
+dist: trusty
+sudo: required
 
-go:
-  - 1.11.x
+services:
+  - docker
 
-script:
-  - make test
+jobs:
+  include:
+
+    - stage: unit tests
+      language: go
+      go: 1.11
+      script:
+        - make test
+
+    - stage: docker images
+      language: go
+      go: 1.11
+      script:
+        - make docker

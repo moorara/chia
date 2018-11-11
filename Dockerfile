@@ -1,9 +1,9 @@
 # BUILD STAGE
 FROM golang:1.11-alpine as builder
-RUN apk add --no-cache make git
+RUN apk add --no-cache git
 WORKDIR /go/src/github.com/moorara/chia/
 COPY . .
-RUN make build && \
+RUN ./scripts/build.sh --main cmd/main.go --binary chia && \
     cp chia /
 
 # FINAL STAGE

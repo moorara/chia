@@ -1,3 +1,5 @@
+[![Build Status][travisci-image]][travisci-url]
+
 # Chia
 
 This is a **work-in-progress** utility for facilitating and automating API testing.
@@ -29,3 +31,7 @@ Supporting the following features:
 | `make coverage`                | Run the unit tests with coverage report              |
 | `make docker`                  | Build Docker image                                   |
 | `make push`                    | Push built image to registry                         |
+
+
+[travisci-url]: https://travis-ci.org/moorara/chia
+[travisci-image]: https://travis-ci.org/moorara/chia.svg?branch=master
