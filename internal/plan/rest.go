@@ -21,6 +21,7 @@ type (
 		Headers  map[string]string      `yaml:"headers"`
 		Body     map[string]interface{} `yaml:"body"`
 		Expect   RESTExpect             `yaml:"expect"`
+		Report   RESTReport             `yaml:"-"`
 	}
 
 	// RESTExpect defines expectations for a REST test
@@ -28,5 +29,10 @@ type (
 		StatusCode int                    `yaml:"status_code"`
 		Headers    map[string]string      `yaml:"headers"`
 		Body       map[string]interface{} `yaml:"body"`
+	}
+
+	// RESTReport defines results for a REST test
+	RESTReport struct {
+		ResponseTime int
 	}
 )
