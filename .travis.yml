@@ -1,5 +1,4 @@
-dist: trusty
-sudo: required
+dist: xenial
 
 services:
   - docker
@@ -7,14 +6,20 @@ services:
 jobs:
   include:
 
-    - stage: unit tests
+    - stage: "Tests"
+      name: "Unit Tests"
       language: go
       go: 1.11
+      env:
+        - GO111MODULE=on
       script:
         - make test
 
-    - stage: docker images
+    - stage: "Build"
+      name: "Docker Images"
       language: go
       go: 1.11
+      env:
+        - GO111MODULE=on
       script:
         - make docker
