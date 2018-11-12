@@ -1,4 +1,5 @@
 [![Build Status][travisci-image]][travisci-url]
+[![Go Report Card][goreport-image]][goreport-url]
 
 # Chia
 
@@ -35,3 +36,6 @@ Supporting the following features:
 
 [travisci-url]: https://travis-ci.org/moorara/chia
 [travisci-image]: https://travis-ci.org/moorara/chia.svg?branch=master
+
+[goreport-url]: https://goreportcard.com/report/github.com/moorara/chia
+[goreport-image]: https://goreportcard.com/badge/github.com/moorara/chia
