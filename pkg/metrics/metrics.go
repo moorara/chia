@@ -2,7 +2,6 @@ package metrics
 
 import (
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -22,7 +21,9 @@ func New(namespace string) *Metrics {
 
 	registry := prometheus.NewRegistry()
 	registry.MustRegister(prometheus.NewGoCollector())
-	registry.MustRegister(prometheus.NewProcessCollector(os.Getpid(), namespace))
+	registry.MustRegister(prometheus.NewProcessCollector(prometheus.ProcessCollectorOpts{
+		Namespace: namespace,
+	}))
 
 	OpLatencyHist := prometheus.NewHistogramVec(
 		prometheus.HistogramOpts{

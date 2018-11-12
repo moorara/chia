@@ -7,13 +7,13 @@ import (
 )
 
 func main() {
-	logger := log.NewLogger(config.Config.Name, config.Config.LogLevel)
+	logger := log.NewLogger("chia", config.Config.LogLevel)
 
 	logger.Info(
 		"version", version.Version,
 		"revision", version.Revision,
 		"branch", version.Branch,
 		"buildTime", version.BuildTime,
-		"message", "API tests started.",
+		"message", "Chia started.",
 	)
 }
