@@ -24,8 +24,8 @@ ldflags="$version_flag $revision_flag $branch_flag $buildtime_flag"
 platforms="linux-386 linux-amd64 darwin-386 darwin-amd64 windows-386 windows-amd64"
 
 
-function process_args {
-  while [ "$#" -gt "0" ]; do
+process_args() {
+  while [ $# -gt 1 ]; do
     key=$1
     case $key in
       -a|--all)
@@ -48,28 +48,28 @@ function process_args {
   binary=${binary:-"build/app"}
 }
 
-function build_binary {
+build_binary() {
   go build \
     -ldflags "$ldflags" \
-    -o $binary \
-    $main
+    -o "$binary" \
+    "$main"
 }
 
-function cross_compile {
+cross_compile() {
   for platform in $platforms; do
-    GOOS=$(echo $platform | cut -d- -f1)
-	  GOARCH=$(echo $platform | cut -d- -f2)
+    GOOS=$(echo "$platform" | cut -d- -f1) \
+	  GOARCH=$(echo "$platform" | cut -d- -f2) \
 	  go build \
       -ldflags "$ldflags" \
-      -o $binary-$platform \
-      $main
+      -o "$binary-$platform" \
+      "$main"
   done
 }
 
 
-process_args $@
+process_args "$@"
 
-if [ "$all" == true ]; then
+if [ "$all" = true ]; then
   cross_compile
 else
   build_binary

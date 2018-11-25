@@ -24,6 +24,7 @@ func NewTestDriver(file string) (TestDriver, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer f.Close()
 
 	plan := new(plan.TestPlan)
 	err = yaml.NewDecoder(f).Decode(plan)
