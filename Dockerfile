@@ -11,4 +11,4 @@ RUN apk add --no-cache ca-certificates
 COPY --from=builder /workspace/chia /usr/local/bin/
 RUN chown -R nobody:nogroup /usr/local/bin/chia
 USER nobody
-CMD chia
+ENTRYPOINT [ "chia" ]
