@@ -9,6 +9,7 @@ import (
 func TestConfig(t *testing.T) {
 	tests := []struct {
 		name                    string
+		expectedName            string
 		expectedLogLevel        string
 		expectedPushgatewayAddr string
 		expectedJaegerAgentAddr string
@@ -16,6 +17,7 @@ func TestConfig(t *testing.T) {
 	}{
 		{
 			name:                    "Defauts",
+			expectedName:            defaultName,
 			expectedLogLevel:        defaultLogLevel,
 			expectedPushgatewayAddr: defaultPushgatewayAddr,
 			expectedJaegerAgentAddr: defaultJaegerAgentAddr,
@@ -25,6 +27,7 @@ func TestConfig(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			assert.Equal(t, tc.expectedName, Config.Name)
 			assert.Equal(t, tc.expectedLogLevel, Config.LogLevel)
 			assert.Equal(t, tc.expectedPushgatewayAddr, Config.PushgatewayAddr)
 			assert.Equal(t, tc.expectedJaegerAgentAddr, Config.JaegerAgentAddr)
