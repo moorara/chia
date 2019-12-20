@@ -6,7 +6,7 @@ COPY . .
 RUN ./scripts/build.sh --main main.go --binary chia
 
 # FINAL STAGE
-FROM alpine:3.10
+FROM alpine:3.11
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /workspace/chia /usr/local/bin/
 RUN chown -R nobody:nogroup /usr/local/bin/chia
