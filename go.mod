@@ -1,6 +1,6 @@
 module github.com/moorara/chia
 
-go 1.12
+go 1.14
 
 require (
 	github.com/moorara/goto v0.3.0
