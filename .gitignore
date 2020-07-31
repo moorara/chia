@@ -3,11 +3,16 @@ main
 chia
 chia-*
 
+# Build directories
+/bin
+/build
+
 # Test files
 *.log
 *.out
 *.test
-coverage/
+cover.html
+coverage.html
 
 # Exceptions
 !Dockerfile.test

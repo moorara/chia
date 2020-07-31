@@ -1,22 +1,13 @@
 name := chia
-build_path := ./build
-coverage_path := ./coverage
-
-docker_tag ?= latest
 docker_image ?= moorara/$(name)
+docker_tag ?= latest
 
-
-clean:
-	@ rm -rf *.log $(name) $(build_path) $(coverage_path)
-
-run:
-	@ go run main.go
 
 build:
-	@ ./scripts/build.sh --main main.go --binary ./$(name)
+	@ cherry build -cross-compile=false
 
 build-all:
-	@ ./scripts/build.sh --all --main main.go --binary $(build_path)/$(name)
+	@ cherry build -cross-compile=true
 
 test:
 	@ go test -race ./...
@@ -25,16 +16,26 @@ test-short:
 	@ go test -short ./...
 
 coverage:
-	@ ./scripts/test-unit-cover.sh
+	@ go test -covermode=atomic -coverprofile=c.out ./...
+	@ go tool cover -html=c.out -o coverage.html
 
 docker:
-	@ docker build -t $(docker_image):$(docker_tag) .
+	@ docker image build -t $(docker_image):$(docker_tag) .
 
 push:
-	@ docker push $(docker_image):$(docker_tag)
+	@ docker image push $(docker_image):$(docker_tag)
+
+push-latest:
+	@ docker image tag $(docker_image):$(docker_tag) $(docker_image):latest
+	  docker image push $(docker_image):latest
+
+save-docker:
+	@ docker image save -o docker.tar $(docker_image):$(docker_tag)
+
+load-docker:
+	@ docker image load -i docker.tar
 
 
-.PHONY: clean
-.PHONY: run build build-all
+.PHONY: build build-all
 .PHONY: test test-short coverage
-.PHONY: docker push
+.PHONY: docker push push-latest save-docker load-docker
