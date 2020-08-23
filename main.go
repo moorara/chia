@@ -13,7 +13,7 @@ func main() {
 	logger = logger.With(
 		config.Config.Name, map[string]string{
 			"version":   version.Version,
-			"revision":  version.Revision,
+			"commit":    version.Commit,
 			"branch":    version.Branch,
 			"goVersion": version.GoVersion,
 			"buildTool": version.BuildTool,
