@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/moorara/chia/cmd/config"
-	"github.com/moorara/chia/cmd/version"
+	"github.com/moorara/chia/version"
 	"github.com/moorara/goto/log"
 )
 
