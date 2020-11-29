@@ -43,7 +43,7 @@ Supporting the following features:
 
 
 [workflow-url]: https://github.com/moorara/chia/actions
-[workflow-image]: https://github.com/moorara/chia/workflows/Master/badge.svg
+[workflow-image]: https://github.com/moorara/chia/workflows/main/badge.svg
 [goreport-url]: https://goreportcard.com/report/github.com/moorara/chia
 [goreport-image]: https://goreportcard.com/badge/github.com/moorara/chia
 [coverage-url]: https://codeclimate.com/github/moorara/chia/test_coverage
