@@ -7,7 +7,7 @@ RUN wget -qO - https://git.io/JeCX6 | sh
 RUN cherry build -cross-compile=false
 
 # FINAL STAGE
-FROM alpine:3.12
+FROM alpine:3.13
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /repo/bin/chia /usr/local/bin/
 RUN chown -R nobody:nogroup /usr/local/bin/chia
